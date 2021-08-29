@@ -65,13 +65,13 @@
 											</div>
 										</li>
 										<li>
-											<a href="@{/whitelist}">Mi lista</a>
+											<a th:href="@{/whitelist}">Mi lista</a>
 										</li>
 										<li>
-											<a href="@{/cart}">Mi carrito</a>
+											<a th:href="@{/cart}">Mi carrito</a>
 										</li>
 										<li>
-											<a href="@{/checkout}">Checkout</a>
+											<a th:href="@{/checkout}">Checkout</a>
 										</li>
 									</ul>
 								</nav>
@@ -106,11 +106,11 @@
 									<div class="header-mini-cart">
 										<div class="mini-cart-btn">
 											<i class="fa fa-shopping-cart"></i>
-											<span class="cart-notification">2</span>
+											<span class="cart-notification" th:text="${cartCount}" ></span>
 										</div>
 										<div class="cart-total-price">
 											<span>total</span>
-											$50.00
+											<p class="text-white" th:text="${total}"></p>
 										</div>
 										<ul class="cart-list">
 											<li>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/ecomerce :: head(pageTitle='Contacto')">
+</head>
+
+<body>
+
+	<div class="wrapper">
+
+		<header th:replace="layout/ecomerce :: header(categorymenu='')">
+		</header>
+		
+		<!-- breadcrumb area start -->
+	    <div class="breadcrumb-area">
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-12">
+	                    <div class="breadcrumb-wrap">
+	                        <nav aria-label="breadcrumb">
+	                            <ul class="breadcrumb">
+	                                <li class="breadcrumb-item"><a th:href="@{/home}">Home</a></li>
+	                                <li class="breadcrumb-item"><a th:href="@{/shop}">Compras</a></li>
+	                                <li class="breadcrumb-item"><a th:href="@{/cart}">Carrito</a></li>
+	                                <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+	                            </ul>
+	                        </nav>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <!-- breadcrumb area end -->
+	  	
+		
+		<div th:replace="layout/ecomerce :: brand">
+		</div>
+
+		<footer th:replace="layout/ecomerce :: footer">
+		</footer>
+
+	</div>
+
+	<div th:replace="layout/ecomerce :: scroll">
+	</div>
+
+	<div th:replace="layout/ecomerce :: scripts">
+	</div>
+
+</body>
+
+</html>

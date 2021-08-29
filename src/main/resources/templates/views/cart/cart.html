@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/ecomerce :: head(pageTitle='Contacto')">
+</head>
+
+<body>
+
+	<div class="wrapper">
+
+		<header th:replace="layout/ecomerce :: header(categorymenu='')">
+		</header>
+		
+		<!-- breadcrumb area start -->
+	    <div class="breadcrumb-area">
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-12">
+	                    <div class="breadcrumb-wrap">
+	                        <nav aria-label="breadcrumb">
+	                            <ul class="breadcrumb">
+	                                <li class="breadcrumb-item"><a th:href="@{/home}">Home</a></li>
+	                                <li class="breadcrumb-item"><a th:href="@{/shop}">Compras</a></li>
+	                                <li class="breadcrumb-item active" aria-current="page">Carrito</li>
+	                            </ul>
+	                        </nav>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <!-- breadcrumb area end -->
+		
+		<!-- cart main wrapper start -->
+	    <div class="cart-main-wrapper">
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-lg-12">
+	                    <!-- Cart Table Area -->
+	                    <div class="cart-table table-responsive">
+	                        <table class="table table-bordered">
+	                            <thead>
+	                                <tr>
+	                                    <th class="pro-thumbnail">Thumbnail</th>
+	                                    <th class="pro-title">Producto</th>
+	                                    <th class="pro-price">Precio</th>
+	                                    <th class="pro-quantity">Cantidad</th>
+	                                    <th class="pro-subtotal">Total</th>
+	                                    <th class="pro-remove">Remover</th>
+	                                </tr>
+	                            </thead>
+	                            <tbody>
+	                                <tr th:each="item, iStat : ${cart}">
+	                                    <td class="pro-thumbnail"><a href="#"><img class="img-fluid" th:src="@{${'/productimgs/' + item.imageName}}" alt="Product"/></a></td>
+	                                    <td class="pro-title"><a href="#" th:text="${item.name}"></a></td>
+	                                    <td class="pro-price"><span th:text="${item.price}"></span></td>
+	                                    <td class="pro-quantity">
+	                                        <div class="pro-qty"><input type="text" value="1"></div>
+	                                    </td>
+	                                    <td class="pro-subtotal"><span>$295.00</span></td>
+	                                    <td class="pro-remove"><a th:href="@{/cart/removeItem/{index}(index=${iStat.index})}"><i class="fa fa-trash-o"></i></a></td>
+	                                </tr>
+	                            </tbody>
+	                        </table>
+	                    </div>
+	
+	                    <!-- Cart Update Option -->
+	                    <div class="cart-update-option d-block d-md-flex justify-content-between">
+	                        <div class="apply-coupon-wrapper">
+	                            <form action="#" method="post" class=" d-block d-md-flex">
+	                                <input type="text" placeholder="Enter Your Coupon Code" required />
+	                                <button class="sqr-btn">Aplicar Cupón</button>
+	                            </form>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	
+	            <div class="row">
+	                <div class="col-lg-5 ml-auto">
+	                    <!-- Cart Calculation Area -->
+	                    <div class="cart-calculator-wrapper">
+	                        <div class="cart-calculate-items">
+	                            <h3>Cart Totals</h3>
+	                            <div class="table-responsive">
+	                                <table class="table">
+	                                    <tr>
+	                                        <td>Sub Total</td>
+	                                        <td>$230</td>
+	                                    </tr>
+	                                    <tr>
+	                                        <td>Costo de envío</td>
+	                                        <td class="text-success">Gratis</td>
+	                                    </tr>
+	                                    <tr class="total">
+	                                        <td>Total</td>
+	                                        <td class="total-amount" th:text="|S/ ${total}|"></td>
+	                                    </tr>
+	                                </table>
+	                            </div>
+	                        </div>
+	                        <a th:href="@{/checkout}" class="sqr-btn d-block">Proceder a pagar</a>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <!-- cart main wrapper end -->
+		
+		<div th:replace="layout/ecomerce :: brand">
+		</div>
+
+		<footer th:replace="layout/ecomerce :: footer">
+		</footer>
+
+	</div>
+
+	<div th:replace="layout/ecomerce :: scroll">
+	</div>
+
+	<div th:replace="layout/ecomerce :: scripts">
+	</div>
+
+</body>
+
+</html>

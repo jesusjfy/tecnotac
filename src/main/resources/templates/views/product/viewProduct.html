@@ -87,14 +87,17 @@
 	                                    </div>
 	                                    <p th:text="${product.description}"><br>
 	                                    </p>
-	                                    <div class="quantity-cart-box d-flex align-items-center">
-	                                        <div class="quantity">
-	                                            <div class="pro-qty"><input type="text" value="1"></div>
-	                                        </div>
-	                                        <div class="action_link">
-	                                            <a class="buy-btn" th:href="@{/addToCart/{id}(id = ${product.id})}">Agregar<i class="fa fa-shopping-cart"></i></a>
-	                                        </div>
-	                                    </div>
+	                                    <form th:action="@{/addToCart}" method="post">
+	                                    	<input type="hidden" name="id" th:value="${product.id}"/>
+		                                    <div class="quantity-cart-box d-flex align-items-center">
+		                                        <div class="quantity">
+		                                            <div class="pro-qty"><input type="text" name="quantity" th:value="1"></div>
+		                                        </div>
+		                                        <div class="action_link">
+		                                            <a href="#" onclick="$(this).closest('form').submit()" class="buy-btn">Agregar<i class="fa fa-shopping-cart"></i></a>
+		                                        </div>
+		                                    </div>
+	                                    </form>
 	                                    <!--<div class="useful-links mt-20">
 	                                        <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Compare"><i class="fa fa-refresh"></i>compare</a>
 	                                        <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Wishlist"><i class="fa fa-heart-o"></i>wishlist</a>
