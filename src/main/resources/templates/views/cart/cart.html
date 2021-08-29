@@ -53,7 +53,7 @@
 	                                <tr th:each="item, iStat : ${cart}">
 	                                    <td class="pro-thumbnail"><a href="#"><img class="img-fluid" th:src="@{${'/productimgs/' + item.imageName}}" alt="Product"/></a></td>
 	                                    <td class="pro-title"><a href="#" th:text="${item.name}"></a></td>
-	                                    <td class="pro-price"><span th:text="${item.price}"></span></td>
+	                                    <td class="pro-price"><span th:text="|S/ ${item.price}|"></span></td>
 	                                    <td class="pro-quantity">
 	                                        <div class="pro-qty"><input type="text" value="1"></div>
 	                                    </td>
@@ -86,7 +86,7 @@
 	                                <table class="table">
 	                                    <tr>
 	                                        <td>Sub Total</td>
-	                                        <td>$230</td>
+	                                        <td th:text="|S/ ${total}|"></td>
 	                                    </tr>
 	                                    <tr>
 	                                        <td>Costo de envío</td>

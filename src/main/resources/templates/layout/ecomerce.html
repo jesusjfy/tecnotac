@@ -110,39 +110,27 @@
 										</div>
 										<div class="cart-total-price">
 											<span>total</span>
-											<p class="text-white" th:text="${total}"></p>
+											<p class="text-white" th:text="|S/ ${total}|"></p>
 										</div>
 										<ul class="cart-list">
-											<li>
+											<li th:each="item, iStat : ${cart}">
 												<div class="cart-img">
-													<a href=""><img th:src="@{/ecomerce/assets/img/cart/cart-1.jpg}" alt=""></a>
+													<a th:href="@{/shop/viewproduct/{id}(id=${item.id})}"><img th:src="@{${'/productimgs/' + item.imageName}}" alt=""></a>
 												</div>
 												<div class="cart-info">
-													<h4><a href="">simple product 09</a></h4>
-													<span>$60.00</span>
+													<h4><a th:href="@{/shop/viewproduct/{id}(id=${item.id})}" th:text="${item.name}">simple product 09</a></h4>
+													<span th:text="${item.price}"></span>
 												</div>
 												<div class="del-icon">
-													<i class="fa fa-times"></i>
-												</div>
-											</li>
-											<li>
-												<div class="cart-img">
-													<a href=""><img th:src="@{/ecomerce/assets/img/cart/cart-2.jpg}" alt=""></a>
-												</div>
-												<div class="cart-info">
-													<h4><a href="">virtual product 10</a></h4>
-													<span>$50.00</span>
-												</div>
-												<div class="del-icon">
-													<i class="fa fa-times"></i>
+													<a th:href="@{/cart/removeItem/{index}(index=${iStat.index})}"><i class="fa fa-times"></i></a>
 												</div>
 											</li>
 											<li class="mini-cart-price">
 												<span class="subtotal">subtotal : </span>
-												<span class="subtotal-price">$88.66</span>
+												<span class="subtotal-price" th:text="${total}"></span>
 											</li>
 											<li class="checkout-btn">
-												<a href="">checkout</a>
+												<a th:href="@{/checkout}">Checkout</a>
 											</li>
 										</ul>
 									</div>
