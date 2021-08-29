@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/adminpanel :: head(pageTitle='Categorías')">
+ 
+</head>
+
+<body class="vertical-layout vertical-menu-modern semi-dark-layout 2-columns  navbar-sticky footer-static" data-open="click" data-menu="vertical-menu-modern" data-col="2-columns" data-layout="semi-dark-layout">
+	
+	<div th:replace="layout/adminpanel :: header">
+	</div>
+	
+	<div th:replace="layout/adminpanel :: main_menu">
+	</div>
+	
+	<!-- BEGIN: Content-->
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="content-wrapper">
+             <div class="content-header row">
+                <div class="content-header-left col-12 mb-2 mt-1">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                            <h5 class="content-header-title float-left pr-1 mb-0">Categorías</h5>
+                            <div class="breadcrumb-wrapper col-12">
+                                <ol class="breadcrumb p-0 mb-0">
+                                    <li class="breadcrumb-item"><a th:href="@{/admin}"><i class="bx bx-home-alt"></i></a>
+                                    </li>
+                                    <li class="breadcrumb-item active" th:text="${title}">
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-body">
+            	<div th:fragment="content">
+              
+					<section class="multiple-validation">
+	                    <div class="row">
+	                        <div class="col-md-6">
+	                            <div class="card">
+	                                <div class="card-header">
+	                                    <h4 class="card-title" th:text="${title}"></h4>
+	                                </div>
+	                                <div class="card-content">
+	                                    <div class="card-body">
+	                                        <form th:action="@{/admin/categories/add}" method="post" th:object="${category}" class="form-horizontal" novalidate>
+	                                            <input type="hidden" name="id"  th:field="*{id}">
+	                                            <div class="row">
+	                                                <div class="col-sm-12">
+	                                                    <div class="form-group">
+	                                                        <div class="controls">
+	                                                            <input type="text" th:field="*{name}" name="name" id="name" class="form-control" placeholder="Escriba el nombre de la categoría" required data-validation-required-message="El nombre es requerido">
+	                                                        </div>
+	                                                    </div>
+	                                                </div>
+	                                            </div>
+	                                            <button type="submit" class="btn btn-primary glow">Guardar</button>
+	                                        </form>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </section>
+                
+				</div>
+            </div>
+        </div>
+    </div>
+    <!-- END: Content-->
+	
+	<footer th:replace="layout/adminpanel :: footer">
+	</footer>
+
+	<div th:replace="layout/adminpanel :: scripts">
+	</div>
+	
+	<!-- BEGIN: Page Vendor JS-->
+    <script th:src="@{/adminpanel/app-assets/vendors/js/forms/validation/jqBootstrapValidation.js}"></script>
+    <!-- END: Page Vendor JS-->
+	
+	<!-- BEGIN: Page JS-->
+    <script th:src="@{/adminpanel/app-assets/js/scripts/forms/validation/form-validation.js}"></script>
+    <!-- END: Page JS-->
+
+</body>
+
+</html>

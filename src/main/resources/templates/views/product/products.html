@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/adminpanel :: head(pageTitle='Categorías')">
+</head>
+
+<body class="vertical-layout vertical-menu-modern semi-dark-layout 2-columns  navbar-sticky footer-static" data-open="click" data-menu="vertical-menu-modern" data-col="2-columns" data-layout="semi-dark-layout">
+	<div th:replace="layout/adminpanel :: header">
+	</div>
+	
+	<div th:replace="layout/adminpanel :: main_menu">
+	</div>
+	
+	<!-- BEGIN: Content-->
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="content-wrapper">
+             <div class="content-header row">
+                <div class="content-header-left col-12 mb-2 mt-1">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                            <h5 class="content-header-title float-left pr-1 mb-0">Categorías</h5>
+                            <div class="breadcrumb-wrapper col-12">
+                                <ol class="breadcrumb p-0 mb-0">
+                                    <li class="breadcrumb-item"><a th:href="@{/admin}"><i class="bx bx-home-alt"></i></a>
+                                    </li>
+                                    <li class="breadcrumb-item active">Lista de categorías
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-body">
+            	<div th:fragment="content">
+            	
+            		<section class="users-list-wrapper">
+	                    <div class="users-list-table">
+	                        <div class="card">
+	                            <div class="card-content">
+	                                <div class="card-body">
+	                                    <!-- datatable start -->
+	                                    <div class="">
+	                                    	<div class = "row">
+												<div class="col-12 mb-2">
+	                                                <a th:href="@{/admin/products/add}" class="btn btn-icon rounded-circle btn-primary glow" type="button">
+	                                                    <i class="bx bx-plus"></i>
+	                                                </a>
+	                                                <span class="ml-1 font-weight-bold text-primary">Nuevo Producto</span>
+	                                            </div>
+	                                    	</div>
+										    <table id="product" class="table">
+										        <thead class="thead-dark">
+										        <tr>
+										            <th scope="col">#</th>
+										            <th scope="col">Nombre</th>
+										            <th scope="col">Precio</th>
+										            <th scope="col">Categoría</th>
+										            <th scope="col">Vista previa</th>
+										            <th scope="col">Acciones</th>
+										        </tr>
+										        </thead>
+										        <tbody>
+											        <tr th:each="product, iStat : ${products}">
+											            <th style="text-align: center; vertical-align: middle;" scope="row" th:text="${iStat.index + 1}">1</th>
+											            <td th:text="${product.name}">Larry</td>
+											            <td th:text="${product.price}">Larry</td>
+											            <td th:text="${product.category.name}">Larry</td>
+											            <td><img src="" height="100px" width="100px"  th:src="@{${'/productimgs/' + product.imageName}}"></td>
+											            <td>
+											            	<a th:href="@{/admin/product/update/{id}(id=${product.id})}"><i class="bx bx-edit-alt"></i></a>
+											            	<a th:href="@{/admin/product/delete/{id}(id=${product.id})}"><i class="bx bx-trash-alt"></i></a>
+											            </td>
+											        </tr>
+										        </tbody>
+										    </table>
+										</div>
+                                    <!-- datatable ends -->
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </section>
+	                <!-- users list ends -->
+				</div>
+            </div>
+        </div>
+	</div>
+    <!-- END: Content-->
+	
+	<footer th:replace="layout/adminpanel :: footer">
+	</footer>
+
+	<div th:replace="layout/adminpanel :: scripts">
+	</div>
+	
+	<!-- BEGIN: Datatable JS-->
+	<script th:src="@{/admin/scripts/product.js}"></script>
+	<!-- END: Datatable JS-->
+</body>
+
+</html>

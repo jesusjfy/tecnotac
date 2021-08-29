@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/ecomerce :: head(pageTitle='Login')">
+</head>
+
+<body>
+
+	<div class="wrapper">
+
+		<header th:replace="layout/ecomerce :: header(categorymenu='')">
+		</header>
+
+		<!-- CONTENIDO -->
+
+		<div th:fragment="content">
+			<!-- breadcrumb area start -->
+			<div class="breadcrumb-area">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<div class="breadcrumb-wrap">
+								<nav aria-label="breadcrumb">
+									<ul class="breadcrumb">
+										<li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+										<li class="breadcrumb-item active" aria-current="page">Iniciar sesión</li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- breadcrumb area end -->
+
+			<!-- login register wrapper start -->
+			<div class="login-register-wrapper">
+				<div class="container">
+					<div class="member-area-from-wrap">
+						<div class="row">
+							<!-- Login Content Start -->
+							<div class="col-lg-6">
+								<div class="login-reg-form-wrap  pr-lg-50">
+									<h2>Iniciar Sesión</h2>
+									<a th:href="@{/oauth2/authorization/google}" class="btn btn-primary">Ingresar con Google</a>
+									<!-- Display Google sign-in button -->
+									<!-- <button id="signinButton">Sign in with Google</button> -->
+									<form th:action="@{/login}" method="post">
+										<!-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> -->
+										<div class="single-input-item">
+											<input name="email" type="email" placeholder="Ingrese su correo electrónico"
+												required />
+										</div>
+										<div class="single-input-item">
+											<input name="password" type="password" placeholder="Ingrese su contraseña"
+												required />
+										</div>
+										<div class="single-input-item">
+											<div
+												class="login-reg-form-meta d-flex align-items-center justify-content-between">
+												<div class="remember-meta">
+													<div class="custom-control custom-checkbox">
+														<input type="checkbox" class="custom-control-input"
+															id="rememberMe">
+														<label class="custom-control-label"
+															for="rememberMe">Recordarme</label>
+													</div>
+												</div>
+												<a href="#" class="forget-pwd">Olvidaste tu contraseña?</a>
+											</div>
+										</div>
+										<div th:if="${param.error}" class="alert alert-error text-danger">
+						                    Credenciales inválidas.
+						                </div>
+										<div class="single-input-item">
+											<button type="submit" class="sqr-btn">Ingresar</button>
+										</div>
+									</form>
+								</div>
+							</div>
+							<!-- Login Content End -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- login register wrapper end -->
+
+		</div>
+
+		<!-- END CONTENIDO -->
+		<div th:replace="layout/ecomerce :: brand">
+		</div>
+
+		<footer th:replace="layout/ecomerce :: footer">
+		</footer>
+
+	</div>
+
+	<div th:replace="layout/ecomerce :: quickviewmodal">
+	</div>
+
+	<div th:replace="layout/ecomerce :: scroll">
+	</div>
+
+	<div th:replace="layout/ecomerce :: scripts">
+	</div>
+
+</body>
+
+</html>

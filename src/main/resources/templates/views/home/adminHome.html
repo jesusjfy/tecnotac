@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/adminpanel :: head(pageTitle='Admin Home')">
+</head>
+
+<body class="vertical-layout vertical-menu-modern semi-dark-layout 2-columns  navbar-sticky footer-static" data-open="click" data-menu="vertical-menu-modern" data-col="2-columns" data-layout="semi-dark-layout">
+
+	<div th:replace="layout/adminpanel :: header">
+	</div>
+	
+	<div th:replace="layout/adminpanel :: main_menu">
+	</div>
+
+	<!-- BEGIN: Content-->
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+            </div>
+            <div class="content-body">
+            	<div th:fragment="content">
+				</div>
+            </div>
+        </div>
+    </div>
+    <!-- END: Content-->
+
+	<footer th:replace="layout/adminpanel :: footer">
+	</footer>
+
+	<div th:replace="layout/adminpanel :: scripts">
+	</div>
+
+</body>
+
+</html>

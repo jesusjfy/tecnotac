@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:fragment="head(pageTitle)">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>[[${pageTitle}]]</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="tecnotac">
+	<!-- Site title -->
+	<title>Tecnotac - Tienda de telefonía celular</title>
+	<!-- Favicon -->
+	<link th:href="@{/ecomerce/assets/img/logo_icon.ico}" type="image/x-icon" rel="shortcut icon" />
+	<!-- Bootstrap CSS -->
+	<link th:href="@{/ecomerce/assets/css/bootstrap.min.css}" rel="stylesheet">
+	<!-- Font-Awesome CSS -->
+	<link th:href="@{/ecomerce/assets/css/font-awesome.min.css}" rel="stylesheet">
+	<!-- helper class css -->
+	<link th:href="@{/ecomerce/assets/css/helper.min.css}" rel="stylesheet">
+	<!-- Plugins CSS -->
+	<link th:href="@{/ecomerce/assets/css/plugins.css}" rel="stylesheet">
+	<!-- Main Style CSS -->
+	<link th:href="@{/ecomerce/assets/css/style.css}" rel="stylesheet">
+	<link th:href="@{/ecomerce/assets/css/skin-default.css}" rel="stylesheet" id="galio-skin">
+</head>
+
+<body>
+
+	<div class="wrapper">
+		<!-- header area start -->
+		<header th:fragment="header(categorymenu)">
+			<!-- header top start -->
+			<div class="header-top-area bg-gray text-center text-md-left">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6 col-md-5">
+							<div class="header-call-action">
+								<a href="javascript:void(0);">
+									<i class="fa fa-envelope"></i>
+									tecnotacstore@gmail.com
+								</a>
+								<a href="javascript:void(0);">
+									<i class="fa fa-phone"></i>
+									(+51) 978 106 957
+								</a>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-7">
+							<div class="header-top-right float-md-right float-none">
+								<nav>
+									<ul>
+										<li>
+											<div class="dropdown header-top-dropdown">
+												<a class="dropdown-toggle" id="myaccount" data-toggle="dropdown"
+													aria-haspopup="true" aria-expanded="false">
+													Cuenta 
+													<i class="fa fa-angle-down"></i>
+												</a>
+												<div class="dropdown-menu" aria-labelledby="myaccount">
+													<a sec:authorize="isAuthenticated()" class="dropdown-item" th:href="@{/myaccount}">mi cuenta</a>
+													<a sec:authorize="!isAuthenticated()" class="dropdown-item" th:href="@{/login}">Iniciar sesión</a>
+													<a sec:authorize="isAuthenticated()" class="dropdown-item" th:href="@{/logout}">Cerrar sesión</a>
+													<a sec:authorize="!isAuthenticated()" class="dropdown-item" th:href="@{/register}">Registrarse</a>
+												</div>
+											</div>
+										</li>
+										<li>
+											<a href="@{/whitelist}">Mi lista</a>
+										</li>
+										<li>
+											<a href="@{/cart}">Mi carrito</a>
+										</li>
+										<li>
+											<a href="@{/checkout}">Checkout</a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- header top end -->
+
+			<!-- header middle start -->
+			<div class="header-middle-area pt-20 pb-20 bg-black">
+				<div class="container">
+					<div class="row align-items-center">
+						<div class="col-lg-3">
+							<div class="brand-logo row align-items-center">
+								<a th:href="@{/home}">
+									<img height="auto" max-width="100%" width="90%"
+										th:src="@{/ecomerce/assets/img/logo/tecnotac-logowithtext.png}"
+										alt="brand logo">
+								</a>
+							</div>
+						</div> <!-- end logo area -->
+						<div class="col-lg-9">
+							<div class="header-middle-right">
+
+								<div class="header-middle-block">
+									<div class="header-middle-searchbox">
+										<input type="text" placeholder="Search...">
+										<button class="search-btn"><i class="fa fa-search"></i></button>
+									</div>
+									<div class="header-mini-cart">
+										<div class="mini-cart-btn">
+											<i class="fa fa-shopping-cart"></i>
+											<span class="cart-notification">2</span>
+										</div>
+										<div class="cart-total-price">
+											<span>total</span>
+											$50.00
+										</div>
+										<ul class="cart-list">
+											<li>
+												<div class="cart-img">
+													<a href=""><img th:src="@{/ecomerce/assets/img/cart/cart-1.jpg}" alt=""></a>
+												</div>
+												<div class="cart-info">
+													<h4><a href="">simple product 09</a></h4>
+													<span>$60.00</span>
+												</div>
+												<div class="del-icon">
+													<i class="fa fa-times"></i>
+												</div>
+											</li>
+											<li>
+												<div class="cart-img">
+													<a href=""><img th:src="@{/ecomerce/assets/img/cart/cart-2.jpg}" alt=""></a>
+												</div>
+												<div class="cart-info">
+													<h4><a href="">virtual product 10</a></h4>
+													<span>$50.00</span>
+												</div>
+												<div class="del-icon">
+													<i class="fa fa-times"></i>
+												</div>
+											</li>
+											<li class="mini-cart-price">
+												<span class="subtotal">subtotal : </span>
+												<span class="subtotal-price">$88.66</span>
+											</li>
+											<li class="checkout-btn">
+												<a href="">checkout</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- header middle end -->
+
+            <!-- main menu area start -->
+            <div class="main-header-wrapper bdr-bottom1">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="main-header-inner">
+                                <div class="category-toggle-wrap">
+                                    <div class="category-toggle">
+                                        categorías
+                                        <div class="cat-icon">
+                                            <i class="fa fa-angle-down"></i>
+                                        </div>
+                                    </div>
+                                    <nav class="category-menu" th:classappend="${categorymenu}">
+                                        <ul>
+                                            <li th:each="category, iStat : ${categories}">
+                                            	<a th:href="@{/shop/category/{id}(id=${category.id})}" th:text="| ${category.name}|">
+                                                 </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div class="main-menu">
+                                    <nav id="mobile-menu">
+                                        <ul>
+                                            <li class="active">
+                                            	<a th:href="@{/home}"><i class="fa fa-home"></i>Home</a>
+                                            </li>
+                                            <li><a th:href="@{/shop}"><i class="fa fa-shopping-cart"></i>Compras</a></li>
+                                            <li><a th:href="@{/contact}"><i class="fa fa-map"></i>Contacto</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 d-block d-lg-none">
+                            <div class="mobile-menu"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- main menu area end -->
+
+		</header>
+		<!-- header area end -->
+
+		<!-- CONTENIDO -->
+		<div th:fragment="content">
+		</div>
+
+		<!-- brand area start -->
+		<div th:fragment="brand" class="brand-area pt-28 pb-30">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<div class="section-title mb-30">
+							<div class="title-icon">
+								<i class="fa fa-crop"></i>
+							</div>
+							<h3>Populares Marcas</h3>
+						</div> <!-- section title end -->
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<div class="brand-active slick-padding slick-arrow-style">
+							<div class="brand-item text-center">
+								<a href="javascript:void(0);"><img height="80"
+										th:src="@{/ecomerce/assets/img/brand/huawei.png}" alt=""></a>
+							</div>
+							<div class="brand-item text-center">
+								<a href="javascript:void(0);"><img height="80"
+										th:src="@{/ecomerce/assets/img/brand/realme.jpg}" alt=""></a>
+							</div>
+							<div class="brand-item text-center">
+								<a href="javascript:void(0);"><img height="80"
+										th:src="@{/ecomerce/assets/img/brand/haylou.png}" alt=""></a>
+							</div>
+							<div class="brand-item text-center">
+								<a href="javascript:void(0);"><img height="80"
+										th:src="@{/ecomerce/assets/img/brand/xiaomi.jpg}" alt=""></a>
+							</div>
+							<div class="brand-item text-center">
+								<a href="javascript:void(0);"><img height="80"
+										th:src="@{/ecomerce/assets/img/brand/mijia.png}" alt=""></a>
+							</div>
+							<div class="brand-item text-center">
+								<a href="javascript:void(0);"><img height="80"
+										th:src="@{/ecomerce/assets/img/brand/amazfit.jpg}" alt=""></a>
+							</div>
+							<div class="brand-item text-center">
+								<a href="javascript:void(0);"><img height="80"
+										th:src="@{/ecomerce/assets/img/brand/oneplus.jpg}" alt=""></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- brand area end -->
+
+		<!-- footer area start -->
+		<footer th:fragment="footer">
+			<!-- footer top start -->
+			<div class="footer-top bg-black pt-14 pb-14">
+				<div class="container">
+					<div class="footer-top-wrapper">
+						<div class="newsletter__wrap">
+							<div class="newsletter__title">
+								<div class="newsletter__icon">
+									<i class="fa fa-envelope"></i>
+								</div>
+								<div class="newsletter__content">
+									<h3>suscribirse al boletín</h3>
+									<p>Promociones, nuevos productos y ventas.</p>
+								</div>
+							</div>
+							<div class="newsletter__box">
+								<form id="mc-form">
+									<input type="email" id="mc-email" autocomplete="off" placeholder="Email">
+									<button id="mc-submit">subscribirse!</button>
+								</form>
+							</div>
+							<!-- mailchimp-alerts Start -->
+							<div class="mailchimp-alerts">
+								<div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
+								<div class="mailchimp-success"></div><!-- mailchimp-success end -->
+								<div class="mailchimp-error"></div><!-- mailchimp-error end -->
+							</div>
+							<!-- mailchimp-alerts end -->
+						</div>
+						<div class="social-icons">
+							<a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Facebook"><i
+									class="fa fa-facebook"></i></a>
+							<a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Twitter"><i
+									class="fa fa-twitter"></i></a>
+							<a href="javascript:void(0);" data-toggle="tooltip" data-placement="top"
+								title="Instagram"><i class="fa fa-instagram"></i></a>
+							<a href="javascript:void(0);" data-toggle="tooltip" data-placement="top"
+								title="Google-plus"><i class="fa fa-google-plus"></i></a>
+							<a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Youtube"><i
+									class="fa fa-youtube"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- footer top end -->
+
+			<!-- footer main start -->
+			<div class="footer-widget-area pt-40 pb-38 pb-sm-10">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-3 col-sm-6">
+							<div class="footer-widget mb-sm-30">
+								<div class="widget-title mb-10 mb-sm-6">
+									<h4>contacto</h4>
+								</div>
+								<div class="widget-body">
+									<ul class="location">
+										<li><i class="fa fa-envelope"></i>tecnotacstore@gmail.com</li>
+										<li><i class="fa fa-phone"></i>(+51) 978 106 957</li>
+										<li><i class="fa fa-map-marker"></i>Tacna</li>
+									</ul>
+									<a class="map-btn" th:href="@{/contact}">Abrir en google
+										maps</a>
+								</div>
+							</div> <!-- single widget end -->
+						</div> <!-- single widget column end -->
+						<div class="col-md-3 col-sm-6">
+							<div class="footer-widget mb-sm-30">
+								<div class="widget-title mb-10 mb-sm-6">
+									<h4>mi cuenta</h4>
+								</div>
+								<div class="widget-body">
+									<ul>
+										<li><a href="javascript:void(0);">mi cuenta</a></li>
+										<li><a href="javascript:void(0);">mi carrito</a></li>
+										<li><a href="javascript:void(0);">checkout</a></li>
+										<li><a href="javascript:void(0);">mi lista</a></li>
+										<li><a href="javascript:void(0);">login</a></li>
+									</ul>
+								</div>
+							</div> <!-- single widget end -->
+						</div> <!-- single widget column end -->
+						<div class="col-md-3 col-sm-6">
+							<div class="footer-widget mb-sm-30">
+								<div class="widget-title mb-10 mb-sm-6">
+									<h4>short code</h4>
+								</div>
+								<div class="widget-body">
+									<ul>
+										<li><a href="javascript:void(0);">gallery</a></li>
+										<li><a href="javascript:void(0);">accordion</a></li>
+										<li><a href="javascript:void(0);">carousel</a></li>
+										<li><a href="javascript:void(0);">map</a></li>
+										<li><a href="javascript:void(0);">tab</a></li>
+									</ul>
+								</div>
+							</div> <!-- single widget end -->
+						</div> <!-- single widget column end -->
+						<div class="col-md-3 col-sm-6">
+							<div class="footer-widget mb-sm-30">
+								<div class="widget-title mb-10 mb-sm-6">
+									<h4>product tags</h4>
+								</div>
+								<div class="widget-body">
+									<ul>
+										<li><a href="javascript:void(0);">computer</a></li>
+										<li><a href="javascript:void(0);">camera</a></li>
+										<li><a href="javascript:void(0);">smart phone</a></li>
+										<li><a href="javascript:void(0);">watch</a></li>
+										<li><a href="javascript:void(0);">tablet</a></li>
+									</ul>
+								</div>
+							</div> <!-- single widget end -->
+						</div> <!-- single widget column end -->
+					</div>
+				</div>
+			</div>
+			<!-- footer main end -->
+
+			<!-- footer bootom start -->
+			<div class="footer-bottom-area bg-gray pt-20 pb-20">
+				<div class="container">
+					<div class="footer-bottom-wrap">
+						<div class="copyright-text">
+							<p><a target="_blank" href="http://www.nibble.pe">Copyright © 2021 All rights reserved</a>
+							</p>
+						</div>
+						<div class="payment-method-img">
+							<img th:src="@{/ecomerce/assets/img/payment.png}" alt="">
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- footer bootom end -->
+
+		</footer>
+		<!-- footer area end -->
+
+	</div>
+
+	<!-- Quick view modal start -->
+	<div th:fragment="quickviewmodal" class="modal" id="quick_view">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<!-- product details inner end -->
+					<div class="product-details-inner">
+						<div class="row">
+							<div class="col-lg-5">
+								<div class="product-large-slider slick-arrow-style_2 mb-20">
+									<div class="pro-large-img">
+										<img th:src="@{/ecomerce/assets/img/product/product-details-img1.jpg}" alt="" />
+									</div>
+									<div class="pro-large-img">
+										<img th:src="@{/ecomerce/assets/img/product/product-details-img2.jpg}" alt="" />
+									</div>
+									<div class="pro-large-img">
+										<img th:src="@{/ecomerce/assets/img/product/product-details-img3.jpg}" alt="" />
+									</div>
+									<div class="pro-large-img">
+										<img th:src="@{/ecomerce/assets/img/product/product-details-img4.jpg}" alt="" />
+									</div>
+									<div class="pro-large-img">
+										<img th:src="@{/ecomerce/assets/img/product/product-details-img5.jpg}" alt="" />
+									</div>
+								</div>
+								<div class="pro-nav slick-padding2 slick-arrow-style_2">
+									<div class="pro-nav-thumb"><img
+											th:src="@{/ecomerce/assets/img/product/product-details-img1.jpg}" alt="" />
+									</div>
+									<div class="pro-nav-thumb"><img
+											th:src="@{/ecomerce/assets/img/product/product-details-img2.jpg}" alt="" />
+									</div>
+									<div class="pro-nav-thumb"><img
+											th:src="@{/ecomerce/assets/img/product/product-details-img3.jpg}" alt="" />
+									</div>
+									<div class="pro-nav-thumb"><img
+											th:src="@{/ecomerce/assets/img/product/product-details-img4.jpg}" alt="" />
+									</div>
+									<div class="pro-nav-thumb"><img
+											th:src="@{/ecomerce/assets/img/product/product-details-img5.jpg}" alt="" />
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-7">
+								<div class="product-details-des mt-md-34 mt-sm-34">
+									<h3><a href="/product/product-details">external
+											product 12</a></h3>
+									<div class="ratings">
+										<span class="good"><i class="fa fa-star"></i></span>
+										<span class="good"><i class="fa fa-star"></i></span>
+										<span class="good"><i class="fa fa-star"></i></span>
+										<span class="good"><i class="fa fa-star"></i></span>
+										<span><i class="fa fa-star"></i></span>
+										<div class="pro-review">
+											<span>1 review(s)</span>
+										</div>
+									</div>
+									<div class="availability mt-10">
+										<h5>Availability:</h5>
+										<span>1 in stock</span>
+									</div>
+									<div class="pricebox">
+										<span class="regular-price">$160.00</span>
+									</div>
+									<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+										tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.<br>
+										Phasellus id nisi quis justo tempus mollis sed et dui. In hac habitasse platea
+										dictumst. Suspendisse ultrices mauris diam. Nullam sed aliquet elit. Mauris
+										consequat nisi ut mauris efficitur lacinia.</p>
+									<div class="quantity-cart-box d-flex align-items-center mt-20">
+										<div class="quantity">
+											<div class="pro-qty"><input type="text" value="1"></div>
+										</div>
+										<div class="action_link">
+											<a class="buy-btn" href="javascript:void(0);">add to cart<i
+													class="fa fa-shopping-cart"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- product details inner end -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Quick view modal end -->
+
+	<!-- Scroll to top start -->
+	<div th:fragment="scroll" class="scroll-top not-visible">
+		<i class="fa fa-angle-up"></i>
+	</div>
+	<!-- Scroll to Top End -->
+
+	<div th:fragment="scripts">
+		<!--All jQuery, Third Party Plugins & Activation (main.js) Files-->
+		<script th:src="@{/ecomerce/assets/js/vendor/modernizr-3.6.0.min.js}"></script>
+		<!-- Jquery Min Js -->
+		<script th:src="@{/ecomerce/assets/js/vendor/jquery-3.3.1.min.js}"></script>
+		<!-- Popper Min Js -->
+		<script th:src="@{/ecomerce/assets/js/vendor/popper.min.js}"></script>
+		<!-- Bootstrap Min Js -->
+		<script th:src="@{/ecomerce/assets/js/vendor/bootstrap.min.js}"></script>
+		<!-- Plugins Js-->
+		<script th:src="@{/ecomerce/assets/js/plugins.js}"></script>
+		<!-- Ajax Mail Js -->
+		<script th:src="@{/ecomerce/assets/js/ajax-mail.js}"></script>
+		<!-- Active Js -->
+		<script th:src="@{/ecomerce/assets/js/main.js}"></script>
+		<!-- Switcher JS [Please Remove this when Choose your Final Projct] -->
+		<script th:src="@{/ecomerce/assets/js/switcher.js}"></script>
+	</div>
+
+</body>
+
+</html>

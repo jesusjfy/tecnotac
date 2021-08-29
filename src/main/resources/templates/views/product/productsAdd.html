@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/adminpanel :: head(pageTitle='Productos')">
+</head>
+
+<body class="vertical-layout vertical-menu-modern semi-dark-layout 2-columns  navbar-sticky footer-static" data-open="click" data-menu="vertical-menu-modern" data-col="2-columns" data-layout="semi-dark-layout">
+	<div th:replace="layout/adminpanel :: header">
+	</div>
+	
+	<div th:replace="layout/adminpanel :: main_menu">
+	</div>
+	
+	<!-- BEGIN: Content-->
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="content-wrapper">
+             <div class="content-header row">
+                <div class="content-header-left col-12 mb-2 mt-1">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                            <h5 class="content-header-title float-left pr-1 mb-0">Productos</h5>
+                            <div class="breadcrumb-wrapper col-12">
+                                <ol class="breadcrumb p-0 mb-0">
+                                    <li class="breadcrumb-item"><a th:href="@{/admin}"><i class="bx bx-home-alt"></i></a>
+                                    </li>
+                                    <li class="breadcrumb-item active" th:text="${title}">
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-body">
+            	<div th:fragment="content">
+            	
+            		<section class="multiple-validation">
+	                    <div class="row">
+	                        <div class="col-md-12">
+	                            <div class="card">
+	                                <div class="card-header">
+	                                    <h4 class="card-title" th:text="${title}"></h4>
+	                                </div>
+	                                <div class="card-content">
+	                                    <div class="card-body">
+	                                    
+										    <form th:action="@{/admin/products/add}" method="post" th:object="${productDTO}" enctype="multipart/form-data" novalidate>
+										        <div class="row">
+										            <div class="col-sm-5">
+										
+										                <input type="hidden" name="id" th:field="*{id}">
+										                <div class="form-group">
+										                    <label for="name">Nombre</label>
+										                    <div class="controls">
+											                    <input type="text" class="form-control" 
+											                    th:field="*{name}" 
+											                    name="name" id="name" 
+											                    placeholder="Ingresa el nombre" 
+											                    required data-validation-required-message="Mínimo 3 palabras"
+											                    minlength="3">
+										                    </div>
+										                </div>
+										                
+										                <div class="form-group">
+										                    <label for="category">Selecciona Categoría</label>
+										                    <select class="form-control" th:field="*{categoryId}" id="category" name="category">
+										                        <option th:each="category :${categories}"
+										                                th:value="${category.id}"
+										                                th:text="${category.name}"
+										                        >
+										                    </select>
+										                </div>
+										                <div class="form-group">
+										                    <label for="price">Precio</label>
+											                <div class="controls">
+											                	<input type="text" th:field="*{price}" name="price" id="price" 
+												                	placeholder="Precio" required data-validation-required-message="Campo requerido"
+												                	class="touchspin" value="50" data-bts-step="0.1" data-bts-decimals="2">
+											                </div>
+										                </div>
+										                <div class="form-group">
+										                    <label for="weight">Peso en gramos</label>
+										                    <div class="controls">
+											                    <input type="text" th:field="*{weight}" name="weight" id="weight"
+										                           placeholder="Peso en gramos" required data-validation-required-message="Campo requerido"
+										                           class="touchspin" value="50" data-bts-step="0.1" data-bts-decimals="2">
+										                    </div>
+										                </div>
+										                <div class="form-group">
+										                    <label for="description">Descripción del producto</label>
+										                    <div class="controls">
+										                    	<textarea class="form-control" rows="5" th:field="*{description}" name="description" id="description"
+										                    	required data-validation-required-message="Campo requerido"></textarea>
+										                   	</div>
+										                </div>
+										            </div>
+										            <div class="col-sm-5">
+										                <p>Imagen del Producto</p>
+										                <div class="custom-file">
+										                	<div class="controls">
+										                    	<input type="file" class="custom-file-input round" name="productImage" accept="image/jpeg, image/png"  id="productImage"
+										                    	required data-validation-required-message="Campo requerido"/>
+										                    </div>
+										                    <label class="custom-file-label" for="productImage">Selecciona una imagen</label>
+										                </div>
+										                <div class="form-group">
+										                    <img src="#" id="imgPreview" height="100px" width="100px" th:src="@{${'/productImages/' + productDTO.imageName}}" style="margin-top: 20px" alt=" ">
+										                </div>
+										                <input type="hidden" name="imgName" th:value="${productDTO.imageName}">
+										                <button type="submit" class="btn btn-primary glow round">Guardar</button>
+										            </div>
+										        </div>
+										    </form>
+										    
+										</div>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </section>
+
+				</div>
+            </div>
+        </div>
+	</div>
+    <!-- END: Content-->
+	
+	<footer th:replace="layout/adminpanel :: footer">
+	</footer>
+
+	<div th:replace="layout/adminpanel :: scripts">
+	</div>
+	
+	<!-- BEGIN: Page Vendor JS-->
+    <script th:src="@{/adminpanel/app-assets/vendors/js/forms/validation/jqBootstrapValidation.js}"></script>
+    <!-- END: Page Vendor JS-->
+	
+	<!-- BEGIN: Page JS-->
+    <script th:src="@{/adminpanel/app-assets/js/scripts/forms/validation/form-validation.js}"></script>
+    <!-- END: Page JS-->
+    
+    <!-- BEGIN: Page Vendor JS-->
+    <script th:src="@{/adminpanel/app-assets/vendors/js/forms/spinner/jquery.bootstrap-touchspin.js}"></script>
+    <!-- END: Page Vendor JS-->
+	
+	<!-- BEGIN: Page JS-->
+    <script th:src="@{/adminpanel/app-assets/js/scripts/forms/number-input.js}"></script>
+    <!-- END: Page JS-->
+	
+	<script>
+	    function readURL(input){
+	        if(input.files && input.files[0]){
+	            var reader = new FileReader();
+	            reader.onload = function(e){
+	                $('#imgPreview').attr('src', e.target.result).width(200).height(200);
+	            }
+	            reader.readAsDataURL(input.files[0])
+	        }
+	    }
+	    $('#productImage').change(function(){
+	        readURL(this);
+	    });
+	    $(".custom-file-input").on("change", function() {
+	        var fileName = $(this).val().split("\\").pop();
+	        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+	    });
+	</script>
+	
+</body>
+
+</html>
