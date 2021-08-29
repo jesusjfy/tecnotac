@@ -21,6 +21,12 @@ public class Product {
 	private String description;
 	private String imageName;
 	
+	@Transient
+	private int quantity;
+	
+	@Transient
+	private double subtotal;
+	
 	public Product() {
 		super();
 	}
@@ -80,10 +86,27 @@ public class Product {
 		this.imageName = imageName;
 	}
 
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public double getSubtotal() {
+		return subtotal;
+	}
+
+	public void setSubtotal(double subtotal) {
+		this.subtotal = subtotal;
+	}
+
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", name=" + name + ", category=" + category + ", price=" + price + ", weight="
-				+ weight + ", description=" + description + ", imageName=" + imageName + "]";
+				+ weight + ", description=" + description + ", imageName=" + imageName + ", quantity=" + quantity
+				+ ", subtotal=" + subtotal + "]";
 	}
-	
+
 }
