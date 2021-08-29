@@ -29,7 +29,7 @@ public class HomeController {
 		model.addAttribute("categories", categoryService.getAllCategory());
 		model.addAttribute("products", productService.getAllProduct());
 		model.addAttribute("cartCount",GlobalData.cart.size());
-		model.addAttribute("total",GlobalData.cart.stream().mapToDouble(Product::getPrice).sum());
+		model.addAttribute("total", GlobalData.cart.stream().mapToDouble(Product::getSubtotal).sum());
 		model.addAttribute("cart",GlobalData.cart);
 		return "/views/home/clientHome";
 	}
@@ -37,7 +37,7 @@ public class HomeController {
 	@GetMapping("/contact")
 	public String contact(Model model) {
 		model.addAttribute("cartCount",GlobalData.cart.size());
-		model.addAttribute("total",GlobalData.cart.stream().mapToDouble(Product::getPrice).sum());
+		model.addAttribute("total", GlobalData.cart.stream().mapToDouble(Product::getSubtotal).sum());
 		model.addAttribute("cart",GlobalData.cart);
 		return "/views/contact/contact";
 	}
@@ -47,7 +47,7 @@ public class HomeController {
 		model.addAttribute("categories", categoryService.getAllCategory());
 		model.addAttribute("products", productService.getAllProduct());
 		model.addAttribute("cartCount",GlobalData.cart.size());
-		model.addAttribute("total",GlobalData.cart.stream().mapToDouble(Product::getPrice).sum());
+		model.addAttribute("total", GlobalData.cart.stream().mapToDouble(Product::getSubtotal).sum());
 		model.addAttribute("cart",GlobalData.cart);
 		return "/views/shop/shop";
 	}
@@ -57,7 +57,7 @@ public class HomeController {
 		model.addAttribute("categories", categoryService.getAllCategory());
 		model.addAttribute("products", productService.getAllProductsByCategoryId(id));
 		model.addAttribute("cartCount",GlobalData.cart.size());
-		model.addAttribute("total",GlobalData.cart.stream().mapToDouble(Product::getPrice).sum());
+		model.addAttribute("total", GlobalData.cart.stream().mapToDouble(Product::getSubtotal).sum());
 		model.addAttribute("cart",GlobalData.cart);
 		return "/views/shop/shop";
 	}
@@ -67,7 +67,7 @@ public class HomeController {
 		model.addAttribute("product", productService.getProductById(id).get());
 		model.addAttribute("products", productService.getAllProduct());
 		model.addAttribute("cartCount",GlobalData.cart.size());
-		model.addAttribute("total",GlobalData.cart.stream().mapToDouble(Product::getPrice).sum());
+		model.addAttribute("total", GlobalData.cart.stream().mapToDouble(Product::getSubtotal).sum());
 		model.addAttribute("cart",GlobalData.cart);
 		return "/views/product/viewProduct";
 	}
@@ -75,7 +75,7 @@ public class HomeController {
 	@GetMapping("/myaccount")
 	public String myAccount(Model model) {
 		model.addAttribute("cartCount",GlobalData.cart.size());
-		model.addAttribute("total",GlobalData.cart.stream().mapToDouble(Product::getPrice).sum());
+		model.addAttribute("total", GlobalData.cart.stream().mapToDouble(Product::getSubtotal).sum());
 		model.addAttribute("cart",GlobalData.cart);
 		return "/views/account/myaccount";
 	}

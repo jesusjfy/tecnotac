@@ -51,13 +51,13 @@
 	                            </thead>
 	                            <tbody>
 	                                <tr th:each="item, iStat : ${cart}">
-	                                    <td class="pro-thumbnail"><a href="#"><img class="img-fluid" th:src="@{${'/productimgs/' + item.imageName}}" alt="Product"/></a></td>
-	                                    <td class="pro-title"><a href="#" th:text="${item.name}"></a></td>
+	                                    <td class="pro-thumbnail"><a th:href="@{/shop/viewproduct/{id}(id=${item.id})}"><img class="img-fluid" th:src="@{${'/productimgs/' + item.imageName}}" alt="Product"/></a></td>
+	                                    <td class="pro-title"><a th:href="@{/shop/viewproduct/{id}(id=${item.id})}" th:text="${item.name}"></a></td>
 	                                    <td class="pro-price"><span th:text="|S/ ${item.price}|"></span></td>
 	                                    <td class="pro-quantity">
-	                                        <div class="pro-qty"><input type="text" value="1"></div>
+	                                        <div class="pro-qty"><input type="text" th:value="${item.quantity}"></div>
 	                                    </td>
-	                                    <td class="pro-subtotal"><span>$295.00</span></td>
+	                                    <td class="pro-subtotal"><span th:text="|S/ ${item.subtotal}|"></span></td>
 	                                    <td class="pro-remove"><a th:href="@{/cart/removeItem/{index}(index=${iStat.index})}"><i class="fa fa-trash-o"></i></a></td>
 	                                </tr>
 	                            </tbody>

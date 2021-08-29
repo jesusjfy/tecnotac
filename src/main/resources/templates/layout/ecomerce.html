@@ -118,8 +118,8 @@
 													<a th:href="@{/shop/viewproduct/{id}(id=${item.id})}"><img th:src="@{${'/productimgs/' + item.imageName}}" alt=""></a>
 												</div>
 												<div class="cart-info">
-													<h4><a th:href="@{/shop/viewproduct/{id}(id=${item.id})}" th:text="${item.name}">simple product 09</a></h4>
-													<span th:text="${item.price}"></span>
+													<h4><a th:href="@{/shop/viewproduct/{id}(id=${item.id})}" th:text="${item.name}"></a></h4>
+													<span th:text="|${item.price} x ${item.quantity}|"></span>
 												</div>
 												<div class="del-icon">
 													<a th:href="@{/cart/removeItem/{index}(index=${iStat.index})}"><i class="fa fa-times"></i></a>
